@@ -202,13 +202,13 @@ def run_feature_engineering(csv_path):
     )
     print(f"[INFO] Final combined feature matrix shape (Val): {X_val_combined.shape}")
 
-    joblib.dump(vectorizer, "vectorizer.pkl")
-    print("[INFO] Vectorizer saved to 'vectorizer.pkl'")
+    joblib.dump(vectorizer, "models/vectorizer.pkl")
+    print("[INFO] Vectorizer saved to 'models/vectorizer.pkl'")
 
     # Also save the feature names list for SHAP
     custom_feat_names = X_train_custom.columns.tolist()
     all_feature_names = list(feature_names) + custom_feat_names
-    joblib.dump(all_feature_names, "feature_names.pkl")
+    joblib.dump(all_feature_names, "models/feature_names.pkl")
 
     return X_train_combined, X_val_combined, y_train, y_val, all_feature_names
 

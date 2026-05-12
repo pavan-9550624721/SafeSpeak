@@ -71,10 +71,12 @@ def train_spam():
     print("--- Training Spam Model ---")
     url = "https://archive.ics.uci.edu/ml/machine-learning-databases/00228/smsspamcollection.zip"
     resp = urllib.request.urlopen(url)
-    zipfile.ZipFile(BytesIO(resp.read())).extractall("spam_data")
+    zipfile.ZipFile(BytesIO(resp.read())).extractall("data/spam_data")
 
     # Read spam data
-    df = pd.read_csv("spam_data/SMSSpamCollection", sep="\t", names=["label", "text"])
+    df = pd.read_csv(
+        "data/spam_data/SMSSpamCollection", sep="\t", names=["label", "text"]
+    )
     df["clean_text"] = df["text"].apply(clean_text)
     df["is_spam"] = (df["label"] == "spam").astype(int)
 

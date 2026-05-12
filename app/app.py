@@ -327,8 +327,8 @@ DISPLAY_LABELS = {
 @st.cache_resource
 def load_models():
     model = joblib.load("models/random_forest_model.pkl")
-    vectorizer = joblib.load("vectorizer.pkl")
-    feature_names = joblib.load("feature_names.pkl")
+    vectorizer = joblib.load("models/vectorizer.pkl")
+    feature_names = joblib.load("models/feature_names.pkl")
     return model, vectorizer, feature_names
 
 
