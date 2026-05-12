@@ -223,7 +223,7 @@ async def predict_post_image(file: UploadFile = File(...)):
         raise HTTPException(status_code=500, detail="Suppression model not loaded.")
 
     try:
-        from utils.ocr_extractor import extract_features_from_image
+        from core.utils.ocr_extractor import extract_features_from_image
 
         image_bytes = await file.read()
         extracted_data = extract_features_from_image(image_bytes)
@@ -247,4 +247,4 @@ async def predict_post_image(file: UploadFile = File(...)):
 
 
 if __name__ == "__main__":
-    uvicorn.run("run_api:api_app", host="0.0.0.0", port=8000, reload=False)
+    uvicorn.run("app.run_api:api_app", host="0.0.0.0", port=8000, reload=False)

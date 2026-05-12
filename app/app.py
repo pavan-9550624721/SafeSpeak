@@ -9,7 +9,7 @@ import re
 import plotly.graph_objects as go
 from streamlit_shap import st_shap
 from scipy.sparse import hstack
-from feature_engineering import clean_text, extract_custom_features
+from core.feature_engineering import clean_text, extract_custom_features
 
 import subprocess
 import atexit
@@ -326,7 +326,7 @@ DISPLAY_LABELS = {
 
 @st.cache_resource
 def load_models():
-    model = joblib.load("model/random_forest_model.pkl")
+    model = joblib.load("models/random_forest_model.pkl")
     vectorizer = joblib.load("vectorizer.pkl")
     feature_names = joblib.load("feature_names.pkl")
     return model, vectorizer, feature_names
@@ -353,7 +353,7 @@ if "api_process" not in st.session_state:
         env = os.environ.copy()
         env["PYTHONUTF8"] = "1"
         proc = subprocess.Popen(
-            [sys.executable, "run_api.py"],
+            [sys.executable, "app/run_api.py"],
             env=env,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,

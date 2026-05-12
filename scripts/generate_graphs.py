@@ -17,7 +17,7 @@ from sklearn.metrics import (
     precision_recall_curve,
 )
 
-from feature_engineering import run_feature_engineering
+from core.feature_engineering import run_feature_engineering
 
 # 1. Setup folders
 os.makedirs("Model_Graphs/XGBoost", exist_ok=True)
@@ -26,7 +26,7 @@ os.makedirs("Model_Graphs/Random_Forest", exist_ok=True)
 # 2. Get Data
 print("[INFO] Loading data and engineering features...")
 X_train_sparse, X_val_sparse, y_train, y_val, feature_names = run_feature_engineering(
-    "train.csv"
+    "data/train.csv"
 )
 target_cols = y_train.columns.tolist()
 

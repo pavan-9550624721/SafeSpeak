@@ -26,7 +26,7 @@ def clean_text(text):
 
 def train_toxicity():
     print("--- Training Toxicity Model ---")
-    df = pd.read_csv("train.csv")
+    df = pd.read_csv("data/train.csv")
     df["clean_text"] = df["comment_text"].apply(clean_text)
 
     # Map severe_toxic -> very_toxic, identity_hate -> hate

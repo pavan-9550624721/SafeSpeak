@@ -27,7 +27,7 @@ def synthesize_suppression_dataset():
     saf_classes = joblib.load("models/safety_classes.pkl")
 
     # Load some real texts
-    df = pd.read_csv("train.csv").sample(n=10000, random_state=42)
+    df = pd.read_csv("data/train.csv").sample(n=10000, random_state=42)
     texts = df["comment_text"].fillna("").astype(str).tolist()
 
     print("Computing base model probabilities...")

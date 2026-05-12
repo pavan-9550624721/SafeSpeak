@@ -22,10 +22,10 @@ from sklearn.metrics import (
 )
 import shap
 
-from feature_engineering import run_feature_engineering
+from core.feature_engineering import run_feature_engineering
 
 os.makedirs("plots", exist_ok=True)
-os.makedirs("model", exist_ok=True)
+os.makedirs("models", exist_ok=True)
 
 
 def plot_confusion_matrices(y_val, y_pred_bin, labels, filepath):
@@ -98,7 +98,7 @@ def explain_metrics():
 
 def main():
     X_train_sparse, X_val_sparse, y_train, y_val, feature_names = (
-        run_feature_engineering("train.csv")
+        run_feature_engineering("data/train.csv")
     )
 
     target_cols = y_train.columns.tolist()
@@ -123,7 +123,7 @@ def main():
     duration = end_time - start_time
     print(f"Training Duration: {duration/60:.2f} minutes")
 
-    joblib.dump(model, "model/random_forest_model.pkl")
+    joblib.dump(model, "models/random_forest_model.pkl")
     print("[INFO] Model saved to 'model/random_forest_model.pkl'")
 
     print(

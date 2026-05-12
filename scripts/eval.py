@@ -1,19 +1,19 @@
 import joblib
 from sklearn.metrics import accuracy_score, f1_score
-from feature_engineering import run_feature_engineering
+from core.feature_engineering import run_feature_engineering
 
 print("Loading data...")
 X_train_sparse, X_val_sparse, y_train, y_val, feature_names = run_feature_engineering(
-    "train.csv"
+    "data/train.csv"
 )
 
 print("Evaluating XGBoost...")
-xgb_model = joblib.load("model/xgboost_model.pkl")
+xgb_model = joblib.load("models/xgboost_model.pkl")
 y_pred_prob_xgb = xgb_model.predict_proba(X_val_sparse)
 y_pred_bin_xgb = (y_pred_prob_xgb >= 0.5).astype(int)
 
 print("Evaluating Random Forest...")
-rf_model = joblib.load("model/random_forest_model.pkl")
+rf_model = joblib.load("models/random_forest_model.pkl")
 y_pred_prob_rf = rf_model.predict_proba(X_val_sparse)
 y_pred_bin_rf = (y_pred_prob_rf >= 0.5).astype(int)
 

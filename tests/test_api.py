@@ -2,7 +2,7 @@ import requests
 import json
 
 try:
-    with open("test_img.png", "rb") as f:
+    with open("tests/test_img.png", "rb") as f:
         image_bytes = f.read()
 
     files = {"file": ("upload.png", image_bytes, "image/png")}
