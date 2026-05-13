@@ -1,4 +1,6 @@
-# Explainable Multi-Label Toxic Comment Detection System
+# SafeSpeak: Explainable Multi-Label Toxic Comment Detection System
+
+SafeSpeak is an enterprise-grade AI moderation tool designed to automatically detect toxic language, insults, obscenities, and hate speech. Unlike black-box models, we use Explainable AI (SHAP) to tell you exactly why content was flagged.
 
 This project is a comprehensive Machine Learning web application designed to detect and explain multiple forms of toxicity in text comments. It utilizes a hybrid feature engineering approach, combining TF-IDF with custom linguistic features, and trains an XGBoost model using a One-vs-Rest strategy. The project integrates SHAP (SHapley Additive exPlanations) to provide deep interpretability and explainability for every prediction.
 
