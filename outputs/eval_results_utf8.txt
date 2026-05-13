@@ -1,0 +1,141 @@
+Loading data...
+
+==================================================
+1. DATA UNDERSTANDING OUTPUTS
+==================================================
+
+[INFO] First 5 rows of dataset:
+                 id  ... identity_hate
+0  0000997932d777bf  ...             0
+1  000103f0d9cfb60f  ...             0
+2  000113f07ec002fd  ...             0
+3  0001b41b1c6bb37e  ...             0
+4  0001d958c54c6e35  ...             0
+
+[5 rows x 8 columns]
+
+[INFO] Dataset shape: (159571, 8)
+
+[INFO] Column names:
+['id', 'comment_text', 'toxic', 'severe_toxic', 'obscene', 'threat', 'insult', 'identity_hate']
+
+[INFO] Data types:
+id               object
+comment_text     object
+toxic             int64
+severe_toxic      int64
+obscene           int64
+threat            int64
+insult            int64
+identity_hate     int64
+dtype: object
+
+[INFO] Null value count:
+id               0
+comment_text     0
+toxic            0
+severe_toxic     0
+obscene          0
+threat           0
+insult           0
+identity_hate    0
+dtype: int64
+
+[INFO] Label distribution for each toxicity category:
+toxic            15294
+severe_toxic      1595
+obscene           8449
+threat             478
+insult            7877
+identity_hate     1405
+dtype: int64
+[INFO] Saved class imbalance graph to 'plots/class_imbalance.png'
+
+==================================================
+2. PREPROCESSING OUTPUTS
+==================================================
+
+[INFO] 5 original comments:
+1: Explanation
+Why the edits made under my username Hardcore Metallica Fan were reverted? They weren't ...
+2: D'aww! He matches this background colour I'm seemingly stuck with. Thanks.  (talk) 21:51, January 11...
+3: Hey man, I'm really not trying to edit war. It's just that this guy is constantly removing relevant ...
+4: "
+More
+I can't make any real suggestions on improvement - I wondered if the section statistics shoul...
+5: You, sir, are my hero. Any chance you remember what page that's on?...
+
+[INFO] 5 comments after cleaning:
+1: explanation why the edits made under my username hardcore metallica fan were reverted? they werent v...
+2: daww! he matches this background colour im seemingly stuck with thanks  talk 2151 january 11 2016 ut...
+3: hey man im really not trying to edit war its just that this guy is constantly removing relevant info...
+4: more i cant make any real suggestions on improvement  i wondered if the section statistics should be...
+5: you sir are my hero any chance you remember what page thats on?...
+
+[INFO] Average comment length: 377.67 characters
+[INFO] Max comment length: 5000 characters
+[INFO] Min comment length: 3 characters
+[INFO] Saved word count distribution plot to 'plots/word_count_distribution.png'
+
+==================================================
+4. TRAIN-VALIDATION SPLIT
+==================================================
+[INFO] Training set size: X=(127656, 2), y=(127656, 6)
+[INFO] Validation set size: X=(31915, 2), y=(31915, 6)
+
+[INFO] Label distribution in Training set:
+toxic            12238
+severe_toxic      1274
+obscene           6734
+threat             404
+insult            6263
+identity_hate     1111
+dtype: int64
+
+[INFO] Label distribution in Validation set:
+toxic            3056
+severe_toxic      321
+obscene          1715
+threat             74
+insult           1614
+identity_hate     294
+dtype: int64
+
+==================================================
+3. FEATURE ENGINEERING OUTPUTS
+==================================================
+
+[INFO] Extracting TF-IDF Features...
+[INFO] Vocabulary size: 20000
+[INFO] Shape of TF-IDF matrix (Train): (127656, 20000)
+[INFO] Top 20 important TF-IDF words (lowest IDF):
+['article' 'page' 'talk' 'wikipedia' 'just' 'like' 'dont' 'think' 'im'
+ 'know' 'edit' 'people' 'time' 'articles' 'did' 'thanks' 'make' 'use'
+ 'good' 'talk page']
+
+[INFO] Extracting Engineered Features...
+
+[INFO] First 5 rows of engineered features:
+        comment_length  word_count  ...  sentiment_score  profanity_count
+140030             111          19  ...        -1.000000                0
+159124             502          91  ...         0.061905                0
+60006             4573         722  ...         0.035458                0
+65432               36           8  ...         0.000000                0
+154979             243          45  ...         0.042857                0
+
+[5 rows x 6 columns]
+
+[INFO] Final combined feature matrix shape (Train): (127656, 20008)
+[INFO] Final combined feature matrix shape (Val): (31915, 20008)
+[INFO] Vectorizer saved to 'vectorizer.pkl'
+Evaluating XGBoost...
+Evaluating Random Forest...
+
+==================================================
+XGBOOST VS RANDOM FOREST COMPARISON SUMMARY
+==================================================
+XGBoost Accuracy:      0.9183
+Random Forest Accuracy:0.9155
+XGBoost Micro F1:      0.6849
+Random Forest Micro F1:0.6802
+==================================================
