@@ -9,3 +9,4 @@ scipy
 joblib
 matplotlib
 seaborn
+plotly
